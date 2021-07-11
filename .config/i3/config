@@ -151,3 +151,34 @@ bindsym $mod+shift+i resize shrink height 5 px or 5 ppt
 bindsym $mod+shift+o resize grow width 5 px or 5 ppt
 
 hide_edge_borders both
+
+# Program shortcuts
+
+# XF86 bindings
+bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 5%-
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 5%+
+
+# SPECIAL mic mute
+bindsym $mod+q exec --no-startup-id amixer set Capture nocap
+bindsym $mod+w exec --no-startup-id amixer set Capture cap
+
+# Screen lock and suspend
+bindsym $mod+Shift+End exec --no-startup-id ~/.config/i3/lock.sh && systemctl suspend
+
+# Screen captures
+bindsym $mod+Shift+Print exec --no-startup-id import -window root /tmp/screenshot.png
+bindsym $mod+Shift+c exec --no-startup-id ~/.config/i3/screenshot.sh
+
+## Autostart
+# Status bar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# Compton
+exec --no-startup-id compton -f
+
+# Wallpaper
+exec_always --no-startup-id ~/.fehbg
+
+# Remove mouse acceleration (might need to change device-id here (9) on a new device)
+exec --no-startup-id xinput --set-prop 9 'libinput Accel Speed' -1.0
