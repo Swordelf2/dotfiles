@@ -13,7 +13,9 @@ for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
 	alias $command="sudo $command"
 done; unset command
 
-alias v=vim
+alias v=nvim
+alias vim=nvim
+alias ls='ls --color=auto'
 alias tree='exa -T'
 alias p='python'
 alias less='less -Ri' # R for colors, i for ignore-case searches

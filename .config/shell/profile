@@ -1,11 +1,12 @@
 # Default programs
-export EDITOR="vim"
+export EDITOR="nvim"
 export BROWSER="firefox"
 
 # Config files locations
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export INPUTRC="$XDG_CONFIG_HOME/shell/inputrc"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
