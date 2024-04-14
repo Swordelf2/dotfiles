@@ -1,0 +1,13 @@
+/Downloads
+/notes
+/go
+/work
+/aur-pkgs
+/.cache
+/.local
+/.mozilla
+/.ssh
+/.dotfiles
+/.rustup
+
+/.config/hypr/monitors.conf
