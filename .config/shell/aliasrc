@@ -1,0 +1,10 @@
+alias ls='exa'
+alias tree='exa -T'
+alias t=tree
+alias p='python'
+alias less='less -Ri' # R for colors, i for ignore-case searches
+alias j='just'
+
+# old
+# alias xr='xrdb ~/.Xresources'
+# alias spotify='spotify --force-device-scale-factor=1.5'
