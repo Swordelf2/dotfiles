@@ -16,7 +16,7 @@ render = true
 hidden = false
 
 [editor.search]
-wrap-around = false
+wrap-around = true
 
 
 
