@@ -1,8 +1,7 @@
+alias exa='exa --color=always'
 alias ls='exa'
 alias tree='exa -T'
 alias t=tree
-alias p='python'
-alias less='less -Ri' # R for colors, i for ignore-case searches
 alias j='just'
 
 # old
