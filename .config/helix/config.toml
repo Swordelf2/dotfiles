@@ -18,5 +18,6 @@ hidden = false
 [editor.search]
 wrap-around = true
 
-
+[editor.lsp]
+# display-inlay-hints = true
 

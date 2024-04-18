@@ -10,4 +10,8 @@
 /.dotfiles
 /.rustup
 
+# Local configs
 /.config/hypr/monitors.conf
+
+# No need to configure
+/.config/bottom
