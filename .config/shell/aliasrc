@@ -1,3 +1,4 @@
+alias hx='helix'
 alias exa='exa --color=always'
 alias ls='exa'
 alias tree='exa -T'
