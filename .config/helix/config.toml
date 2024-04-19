@@ -14,6 +14,8 @@ render = true
 
 [editor.file-picker]
 hidden = false
+git-ignore = true
+git-exclude = false
 
 [editor.search]
 wrap-around = true
