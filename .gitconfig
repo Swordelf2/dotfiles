@@ -8,3 +8,25 @@
 	br = branch
 	ci = commit
 	st = status
+
+# Set difftastic as diff tool
+[diff]
+        tool = difftastic
+
+[difftool]
+        prompt = false
+
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+        difftool = true
+
+# `git dft` is less to type than `git difftool`.
+[alias]
+        dft = difftool
+
+# `git dlog` to show `git log -p` with difftastic.
+[alias]
+        dlog = "-c diff.external=difft log -p --ext-diff"
+
