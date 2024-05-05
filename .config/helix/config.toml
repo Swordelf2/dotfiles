@@ -20,6 +20,12 @@ git-exclude = false
 [editor.search]
 wrap-around = true
 
+[keys.normal]
+esc = "collapse_selection"
+
+[keys.select]
+esc = ["normal_mode", "collapse_selection"]
+
 [keys.normal.space]
 w = ":w"
 

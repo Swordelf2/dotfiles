@@ -4,6 +4,7 @@ alias ls='exa'
 alias tree='exa -T'
 alias t=tree
 alias j='just'
+alias gitui='gitui -t theme.ron'
 
 # old
 # alias xr='xrdb ~/.Xresources'

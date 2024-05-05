@@ -16,3 +16,8 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
 export HISTFILE="$XDG_DATA_HOME/history"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+
+export PATH="/home/swordelf/.local/share/solana/install/active_release/bin:$PATH"
+
+# Specific apps
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
