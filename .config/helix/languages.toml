@@ -1,2 +1,12 @@
 [language-server.rust-analyzer.config]
 check.command = "clippy"
+# Remove parenthesis and argument snippets when completing function.
+completion.callable.snippets = "none"
+# Whether to show full function/method signatures in completion docs.
+completion.fullFunctionSignatures.enable = true
+# Enables completions of private items and fields that are defined in the current workspace even if they are not visible at the current position.
+completion.privateEditable.enable = true
+
+
+
+

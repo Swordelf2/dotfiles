@@ -4,6 +4,9 @@ theme = "catppuccin_macchiato"
 line-number = "relative"
 # cursorline = true
 color-modes = true
+completion-timeout = 0
+idle-timeout = 0
+completion-replace = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -25,6 +28,7 @@ esc = "collapse_selection"
 
 [keys.normal.space]
 w = ":w"
+e = ":reload"
 
 [keys.select]
 esc = ["normal_mode", "collapse_selection"]
@@ -34,4 +38,6 @@ esc = ["normal_mode", "collapse_selection"]
 
 [editor.lsp]
 # display-inlay-hints = true
+display-messages = true
+goto-reference-include-declaration = false
 
