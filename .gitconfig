@@ -28,3 +28,5 @@
 [include]
 	path = .config/delta/themes/catppuccin.gitconfig
 
+[pull]
+	rebase = true
