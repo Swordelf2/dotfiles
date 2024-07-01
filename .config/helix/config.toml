@@ -6,7 +6,7 @@ line-number = "relative"
 color-modes = true
 completion-timeout = 0
 idle-timeout = 0
-completion-replace = true
+completion-replace = false
 
 [editor.cursor-shape]
 insert = "bar"
@@ -17,7 +17,7 @@ render = true
 
 [editor.file-picker]
 hidden = false
-git-ignore = true
+git-ignore = false
 git-exclude = false
 
 [editor.search]
