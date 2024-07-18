@@ -1,5 +1,5 @@
 # Default programs
-export EDITOR="helix"
+export EDITOR="hx"
 export BROWSER="firefox"
 
 export LESS="-iR"
