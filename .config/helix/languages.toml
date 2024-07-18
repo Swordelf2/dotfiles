@@ -10,3 +10,9 @@ references.excludeTests = true
 references.excludeImports = true
 
 
+[[language]]
+name = "todotxt"
+# scope = "text.todotxt"
+file-types = [{ glob = "todo.txt" }, { glob = "*.todo.txt" }, "todotxt"]
+# formatter = { command = "sort" }
+# auto-format = true
