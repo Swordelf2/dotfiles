@@ -5,6 +5,8 @@ alias t=tree
 alias j='just'
 alias gitui='gitui -t theme.ron'
 
+alias battery='cat /sys/class/power_supply/BAT1/capacity'
+
 # old
 # alias xr='xrdb ~/.Xresources'
 # alias spotify='spotify --force-device-scale-factor=1.5'
