@@ -3,7 +3,11 @@ alias ls='exa'
 alias tree='exa -T'
 alias t=tree
 alias j='just'
-alias gitui='gitui -t theme.ron'
+alias c='cargo'
+alias lg='lazygit'
+
+alias vpn-up='sudo wg-quick up wg0-client'
+alias vpn-down='sudo wg-quick down wg0-client'
 
 alias battery='cat /sys/class/power_supply/BAT1/capacity'
 

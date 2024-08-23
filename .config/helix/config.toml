@@ -19,6 +19,7 @@ render = true
 hidden = false
 git-ignore = false
 git-exclude = false
+deduplicate-links = false
 
 [editor.search]
 wrap-around = true
