@@ -1,5 +1,5 @@
 alias exa='exa --color=always'
-alias ls='exa'
+alias ls='exa -l'
 alias tree='exa -T'
 alias t=tree
 alias j='just'

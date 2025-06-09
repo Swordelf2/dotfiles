@@ -37,6 +37,12 @@ esc = ["normal_mode", "collapse_selection"]
 [keys.insert]
 "C-." = "code_action"
 
+[keys.normal."["]
+s = "@?todo!\\(\\)<ret>"
+
+[keys.normal."]"]
+s = "@/todo!\\(\\)<ret>"
+
 [editor.lsp]
 # display-inlay-hints = true
 display-messages = true
