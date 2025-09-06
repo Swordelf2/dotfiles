@@ -1,7 +1,7 @@
 ---
-json_rpc_url: https://api.mainnet-beta.solana.com
+json_rpc_url: https://mainnet.helius-rpc.com/?api-key=c8ff4aa1-fbba-4497-8ed8-6646433df3e4
 websocket_url: ''
-keypair_path: /dev/null
+keypair_path: /home/swordelf/work/volt/arb/arb/saved_keys/slave/2Zzmxw6b9m5773VDxEGkkfBKe2VtA8mzsA4Yh5pTYCGA.json
 address_labels:
   '11111111111111111111111111111111': System Program
 commitment: confirmed

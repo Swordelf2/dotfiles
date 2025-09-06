@@ -1,5 +1,5 @@
 # Default programs
-export EDITOR="hx"
+export EDITOR="nvim"
 export BROWSER="firefox"
 
 export LESS="-iR"
@@ -23,3 +23,4 @@ export PATH="$HOME/.config/shell/scripts:$HOME/.local/share/solana/install/activ
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 
 export PATH="/home/swordelf/.local/share/solana/install/active_release/bin:$PATH"
+export PATH="/home/swordelf/.local/share/cargo/bin:$PATH"
