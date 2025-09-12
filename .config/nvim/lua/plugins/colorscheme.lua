@@ -1,14 +1,18 @@
 return {
+  -- Temp fix for `bufferline.get` issue
+  -- Issue: https://github.com/LazyVim/LazyVim/issues/6355
   {
-    "folke/tokyonight.nvim",
-    -- lazy = false,    -- load on startup
-    -- priority = 1000, -- make sure it loads before other plugins
-    opts = {
-      style = "night", -- "storm", "moon", "night", or "day"
-    },
-    config = function(_, opts)
-      require("tokyonight").setup(opts)
-      vim.cmd.colorscheme("tokyonight-night")
+    "catppuccin",
+    optional = true,
+    opts = function()
+      local bufferline = require("catppuccin.groups.integrations.bufferline")
+      bufferline.get = bufferline.get or bufferline.get_theme
     end,
+  },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin-macchiato",
+    },
   },
 }
