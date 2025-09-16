@@ -10,6 +10,7 @@ return {
               excludeTests = true,
               excludeImports = true,
             },
+            workspace = { symbol = { search = { kind = "all_symbols" } } }, -- rust-analyzer.workspace.symbol.search.kind
           },
         },
       },

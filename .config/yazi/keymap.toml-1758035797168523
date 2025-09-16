@@ -1,0 +1,4 @@
+[[manager.keymap]]
+on = ["g", "n"]
+exec = "cd ~/notes"
+desc = "Go to Projects folder"
