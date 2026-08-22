@@ -1,11 +1,9 @@
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
-
+  diffRenderers:
+    - colorArg: always
+      command: delta --dark --paging=never
 gui:
   scrollHeight: 10
-
   theme:
     activeBorderColor:
       - '#89b4fa'
@@ -26,6 +24,5 @@ gui:
       - '#cdd6f4'
     searchingActiveBorderColor:
       - '#f9e2af'
-
   authorColors:
     '*': '#b4befe'
