@@ -1,4 +1,4 @@
-# Working in This Repository
+# Repository
 
 This is a chezmoi source directory, not a conventional application repository. Files here describe the desired state of files in the home directory; they are not necessarily copied there verbatim. There is no build, test suite, release process, or repository-wide formatting step.
 
@@ -9,16 +9,31 @@ This is a chezmoi source directory, not a conventional application repository. F
 - Preserve existing attributes when editing or moving entries. Check the chezmoi source-state attribute documentation before introducing an unfamiliar prefix.
 - Hidden files in the source directory are ignored unless their names begin with `.chezmoi`.
 
-## Daily Workflow
-
-Edit source-state files in this repository directly. 
-
 ## Editing and Validation
 
-- Make focused edits and preserve the style of the file being changed. Lua files use tabs; continued shell constructs use four spaces.
-- Shell scripts need a clear shebang, quoted expansions, and executable metadata when appropriate. Run ShellCheck on changed shell scripts when available.
-- Treat monitor and host settings as machine-specific; use templates for genuine per-machine differences.
+### Docs
+
+* Edit source-state files in this repository directly. 
+* Check the installed version before changing a tool’s config.
+* Consult the official upstream documentation matching that version.
+* Prefer official docs/repo over third-party examples.
+
+### Editing
+
+* Inspect the existing config before editing.
+* Prefer clear and concise working code.
+* Validate with the tool’s own config-checking/runtime commands when available.
+* Make focused edits and preserve the style of the file being changed. Lua files use tabs; continued shell constructs use four spaces.
+* Treat monitor and host settings as machine-specific; use templates for genuine per-machine differences.
 
 ## Sensitive Data
 
 Never commit credentials, tokens, machine identifiers, or unredacted private configuration. The `private_` prefix only restricts target permissions; it does not encrypt repository contents. 
+
+# Dotfiles / PC configuration
+
+User's preferences:
+
+* Arch + Hyprland,
+* keyboard driven, vim keybindings preferred
+* clean and nice-looking visuals, catppuccin-macchiato theme

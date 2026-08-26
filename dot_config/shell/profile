@@ -23,3 +23,8 @@ export PATH="$HOME/.config/shell/scripts:$PATH"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 
 export PATH="/home/swordelf/.local/share/cargo/bin:$PATH"
+
+# API keys
+if [ -r "$HOME/.local/openrouter_key" ]; then
+    export OPENROUTER_API_KEY="$(<"$HOME/.local/openrouter_key")"
+fi
