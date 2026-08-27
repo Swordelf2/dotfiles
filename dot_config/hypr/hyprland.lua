@@ -38,8 +38,9 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
+	hl.exec_cmd("handy --start-hidden")
 
-	hl.exec_cmd("firefox")
+	hl.exec_cmd("glide-bin")
 
 	hl.exec_cmd("cd ~/notes && " .. terminal .. " -e nvim notes.md", { workspace = "special:magic" })
 end)
@@ -338,6 +339,17 @@ hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 
 -- Cycle audio output
 hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("~/.config/shell/scripts/cycle-sinks.sh"))
+
+local function toggleHandyTranscribe()
+	hl.exec_cmd("pkill -USR2 -x handy")
+end
+local function toggleHandyTranscribeWithPostProcess()
+	hl.exec_cmd("pkill -USR1 -x handy")
+end
+hl.bind("pause", toggleHandyTranscribe)
+hl.bind("pause", toggleHandyTranscribe, { release = true })
+hl.bind("F7", toggleHandyTranscribe)
+hl.bind("F7", toggleHandyTranscribe, { release = true })
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
