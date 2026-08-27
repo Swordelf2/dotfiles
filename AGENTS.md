@@ -14,15 +14,12 @@ This is a chezmoi source directory, not a conventional application repository. F
 ### Docs
 
 * Edit source-state files in this repository directly. 
-* Check the installed version before changing a tool’s config.
-* Consult the official upstream documentation matching that version.
 * Prefer official docs/repo over third-party examples.
 
 ### Editing
 
 * Inspect the existing config before editing.
 * Prefer clear and concise working code.
-* Validate with the tool’s own config-checking/runtime commands when available.
 * Make focused edits and preserve the style of the file being changed. Lua files use tabs; continued shell constructs use four spaces.
 * Treat monitor and host settings as machine-specific; use templates for genuine per-machine differences.
 
