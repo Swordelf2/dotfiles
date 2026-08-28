@@ -11,7 +11,7 @@ function M:entry()
 	local output, err = M.run_with(cwd())
 	permit:drop()
 	if not output then
-		return ya.notify { title = "Fzf", content = tostring(err), timeout = 5, level = "error" }
+		return ya.notify({ title = "Fzf", content = tostring(err), timeout = 5, level = "error" })
 	end
 
 	local urls = M.split_urls(cwd(), output)
@@ -34,7 +34,7 @@ end
 function M.run_with(dir)
 	local child, err = Command("fzf")
 		:arg("-m")
-		:arg("--walker=dir")
+		:arg("--walker=dir,hidden")
 		:cwd(tostring(dir))
 		:stdin(Command.INHERIT)
 		:stdout(Command.PIPED)

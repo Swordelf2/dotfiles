@@ -1,7 +1,9 @@
 git:
   diffRenderers:
-    - colorArg: always
+    - name: normal
       command: delta --dark --paging=never
+    - name: side-by-side
+      command: delta --dark --paging=never --side-by-side
 gui:
   scrollHeight: 10
   theme:
