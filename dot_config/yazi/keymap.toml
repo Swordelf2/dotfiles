@@ -7,3 +7,8 @@ desc = "Cd to ~/notes"
 on = "z"
 run = "plugin fzf-dirs"
 desc = "Fuzzy-find directories"
+
+[[mgr.prepend_keymap]]
+on = "Z"
+run = "plugin fzf"
+desc = "Fuzzy-find files"
