@@ -28,3 +28,10 @@ export PATH="/home/swordelf/.local/share/cargo/bin:$PATH"
 if [ -r "$HOME/.local/openrouter_key" ]; then
     export OPENROUTER_API_KEY="$(<"$HOME/.local/openrouter_key")"
 fi
+if [ -r "$HOME/.local/civitai_token" ]; then
+    export CIVITAI_TOKEN="$(<"$HOME/.local/civitai_token")"
+fi
+if [ -r "$HOME/.local/hf_token" ]; then
+    export HF_TOKEN="$(<"$HOME/.local/hf_token")"
+fi
+
