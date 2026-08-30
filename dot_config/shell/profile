@@ -1,6 +1,6 @@
 # Default programs
 export EDITOR="nvim"
-export BROWSER="firefox"
+export BROWSER="glide-bin"
 
 export LESS="-iR"
 
