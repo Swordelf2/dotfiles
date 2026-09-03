@@ -35,11 +35,10 @@ local menu = "wofi --show drun"
 hl.on("hyprland.start", function()
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
+	hl.exec_cmd("noctalia")
+
 	-- hl.exec_cmd("handy --start-hidden")
-	hl.exec_cmd("noctalia --deamon")
-
 	hl.exec_cmd("glide-bin")
-
 	hl.exec_cmd("cd ~/notes && " .. terminal .. " -e nvim notes.md", { workspace = "special:magic" })
 end)
 
@@ -97,7 +96,7 @@ hl.config({
 	},
 
 	decoration = {
-		rounding = 10,
+		rounding = 20,
 		rounding_power = 2,
 
 		-- Change transparency of focused and unfocused windows
@@ -114,7 +113,7 @@ hl.config({
 		blur = {
 			enabled = true,
 			size = 3,
-			passes = 1,
+			passes = 2,
 			vibrancy = 0.1696,
 		},
 	},
@@ -251,9 +250,29 @@ hl.gesture({
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
--- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("kitty"))
+
+local ipc = "noctalia msg "
+
+-- Core binds
+hl.bind(mainMod .. "+Space", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
+hl.bind(mainMod .. "+comma", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
+hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher"))
+
+-- Media keys
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. "volume-up"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. "volume-down"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. "volume-mute"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. "brightness-up"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. "brightness-down"))
+
+-- Noctalia Settings
+hl.window_rule({
+	match = { class = "dev.noctalia.Noctalia" },
+	float = true,
+	size = { 1080, 920 },
+})
 
 local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
@@ -306,26 +325,6 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
-hl.bind(
-	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86AudioMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86AudioMicMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
-	{ locked = true, repeating = true }
-)
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 
@@ -343,9 +342,6 @@ hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("~/.config/shell/scripts/cycle-sinks
 
 local function toggleHandyTranscribe()
 	hl.exec_cmd("pkill -USR2 -x handy")
-end
-local function toggleHandyTranscribeWithPostProcess()
-	hl.exec_cmd("pkill -USR1 -x handy")
 end
 hl.bind("pause", toggleHandyTranscribe)
 hl.bind("pause", toggleHandyTranscribe, { release = true })
