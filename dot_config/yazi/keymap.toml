@@ -4,6 +4,11 @@ run = "cd ~/notes"
 desc = "Cd to ~/notes"
 
 [[mgr.prepend_keymap]]
+on = ["g", "z"]
+run = "cd ~/.local/share/chezmoi/"
+desc = "Cd to ~/notes"
+
+[[mgr.prepend_keymap]]
 on = "z"
 run = "plugin fzf-dirs"
 desc = "Fuzzy-find directories"
