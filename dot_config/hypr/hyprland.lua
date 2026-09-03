@@ -32,13 +32,11 @@ local menu = "wofi --show drun"
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 -- Or execute your favorite apps at launch like this:
 --
-hl.bind("SUPER + ALT + T", hl.dsp.exec_cmd("cd ~/notes && " .. terminal .. " -e nvim notes.md"))
-hl.bind("SUPER + T", hl.dsp.exec_cmd("cd ~/notes && alacritty -e nvim notes.md"))
 hl.on("hyprland.start", function()
-	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
 	-- hl.exec_cmd("handy --start-hidden")
+	hl.exec_cmd("noctalia --deamon")
 
 	hl.exec_cmd("glide-bin")
 
