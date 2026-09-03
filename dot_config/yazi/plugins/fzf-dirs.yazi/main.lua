@@ -24,14 +24,15 @@ local function fd_args(dir)
 end
 
 function M:entry()
+	local dir = cwd()
 	local permit = ui.hide()
-	local output, err = M.run_with(cwd())
+	local output, err = M.run_with(dir)
 	permit:drop()
 	if not output then
 		return ya.notify({ title = "Fzf", content = tostring(err), timeout = 5, level = "error" })
 	end
 
-	local urls = M.split_urls(cwd(), output)
+	local urls = M.split_urls(dir, output)
 	if #urls == 0 then
 		return
 	elseif #urls == 1 then
@@ -71,6 +72,7 @@ function M.run_with(dir)
 	end
 
 	local output, err = child:wait_with_output()
+	source:start_kill()
 	source:wait()
 	if not output then
 		return nil, Err("Cannot read `fzf` output, error: %s", err)
