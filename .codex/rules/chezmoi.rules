@@ -1,0 +1,6 @@
+prefix_rule(
+    pattern = ["chezmoi", "apply", "--exclude=scripts"],
+    decision = "allow",
+    justification = "Allow this repository's guarded dotfile apply workflow without scripts",
+    match = ["chezmoi apply --exclude=scripts"],
+)

@@ -11,6 +11,42 @@ This is a chezmoi source directory, not a conventional application repository. F
 
 ## Editing and Validation
 
+### Session Workflow
+
+For the main Codex conversation, run this workflow once at the first
+mutation-authorized turn:
+
+1. Report `git status`.
+2. If the worktree or index has changes, run `git add -A`, inspect the staged
+   content for credentials, tokens, machine identifiers, or unredacted private
+   configuration, and commit it as
+   `[codex-auto:pre] <concise summary of the existing changes>`.
+3. Run `chezmoi re-add`.
+4. If `re-add` changes the repository, run `git add -A`, perform the same
+   sensitive-data inspection, and commit it as
+   `[codex-auto:re-add] <concise summary of the imported live changes>`.
+
+Before finishing a mutation-authorized task:
+
+1. Run relevant validation.
+2. Run `git add -A`, inspect the staged content for sensitive data, and, if
+   anything is staged, commit it as
+   `[codex-auto:work] <concise summary of the completed task>`.
+3. Run `chezmoi status` and `chezmoi diff --no-pager`.
+4. If the preview contains unexpected target drift, deletions, scripts, or
+   unrelated paths, do not apply; report the issue instead.
+5. Otherwise, run exactly `chezmoi apply --exclude=scripts`. Do not add targets
+   or other flags, especially `--force`, `--init`, `--destination`, or
+   `--source`.
+6. Verify that `chezmoi status --exclude=scripts` is clean.
+
+The text after each `[codex-auto:*]` tag must describe the relevant contents of
+that commit, not merely restate the workflow stage. Do not create empty
+commits, amend or squash existing commits, or push automatically. If a
+sensitive-data inspection or commit fails, stop before the next step and
+report it. Plan-only and review-only sessions remain non-mutating; run the
+start workflow if the session later becomes mutation-authorized.
+
 ### Docs
 
 * Edit source-state files in this repository directly. 

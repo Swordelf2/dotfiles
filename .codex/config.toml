@@ -1,0 +1,5 @@
+default_permissions = "workspace-with-git"
+
+[permissions.workspace-with-git]
+extends = ":workspace"
+filesystem = { ":workspace_roots" = { ".git" = "write" } }
