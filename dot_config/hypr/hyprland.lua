@@ -20,7 +20,7 @@ require("monitors")
 ---------------------
 
 -- Set programs that you use
-local terminal = "alacritty"
+local terminal = "kitty"
 local menu = "wofi --show drun"
 
 -------------------
