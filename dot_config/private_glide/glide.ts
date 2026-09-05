@@ -23,8 +23,12 @@ glide.prefs.set("layout.css.prefers-color-scheme.content-override", 0);
 
 glide.o.hint_size = "18px"
 
-glide.keymaps.set("normal", "H", "back");
-glide.keymaps.set("normal", "L", "forward");
+glide.keymaps.set("normal", "H", "tab_prev");
+glide.keymaps.set("normal", "L", "tab_next");
+glide.keymaps.set("normal", "<C-o>", "back");
+glide.keymaps.set("normal", "<C-i>", "forward");
+glide.keymaps.del("normal", "f");
+glide.keymaps.set("normal", "s", "hint");
 
 glide.keymaps.set("insert", "<C-n>", "keys <Down>");
 glide.keymaps.set("command", "<C-n>", "keys <Down>");
