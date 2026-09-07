@@ -1,0 +1,4 @@
+[audio]
+enable_sounds = true
+notification_sound = "/usr/share/noctalia/assets/sounds/notification.wav"
+sound_volume = 0.35
