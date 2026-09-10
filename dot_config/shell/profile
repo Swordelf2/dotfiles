@@ -1,4 +1,5 @@
 # Default programs
+export TERMINAL="kitty"
 export EDITOR="nvim"
 export BROWSER="glide-bin"
 
