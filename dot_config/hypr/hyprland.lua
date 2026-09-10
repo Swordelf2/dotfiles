@@ -336,6 +336,7 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 
 -- Screenshot
 hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
+hl.bind("SHIFT + Print", hl.dsp.exec_cmd("grim - | wl-copy"))
 
 -- Cycle audio output
 hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("~/.config/shell/scripts/cycle-sinks.sh"))
