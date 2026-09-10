@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+case "$1" in
+    *.pur)
+        exec gio open "$1"
+        ;;
+    *)
+        exec /usr/bin/xdg-open "$@"
+        ;;
+esac
