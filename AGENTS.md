@@ -35,9 +35,9 @@ Before finishing a mutation-authorized task:
 3. Run `chezmoi status` and `chezmoi diff --no-pager`.
 4. If the preview contains unexpected target drift, deletions, scripts, or
    unrelated paths, do not apply; report the issue instead.
-5. Otherwise, run exactly `chezmoi apply --exclude=scripts`. Do not add targets
-   or other flags, especially `--force`, `--init`, `--destination`, or
-   `--source`.
+5. Otherwise, run exactly
+   `chezmoi apply --exclude=scripts --error-on-conflict`. Do not add targets or
+   other flags, especially `--force`, `--init`, `--destination`, or `--source`.
 6. Verify that `chezmoi status --exclude=scripts` is clean.
 
 The text after each `[codex-auto:*]` tag must describe the relevant contents of

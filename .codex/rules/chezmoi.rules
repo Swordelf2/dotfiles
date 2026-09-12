@@ -1,6 +1,6 @@
 prefix_rule(
-    pattern = ["chezmoi", "apply", "--exclude=scripts"],
+    pattern = ["chezmoi", "apply", "--exclude=scripts", "--error-on-conflict"],
     decision = "allow",
-    justification = "Allow this repository's guarded dotfile apply workflow without scripts",
-    match = ["chezmoi apply --exclude=scripts"],
+    justification = "Allow conflict-safe dotfile apply without scripts",
+    match = ["chezmoi apply --exclude=scripts --error-on-conflict"],
 )
