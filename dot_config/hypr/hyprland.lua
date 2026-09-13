@@ -95,6 +95,43 @@ hl.config({
 		layout = "dwindle",
 	},
 
+	group = {
+		-- Keep grouping explicit so newly opened windows do not join by accident.
+		auto_group = false,
+		insert_after_current = true,
+		focus_removed_window = true,
+
+		col = {
+			border_active = "rgb(c6a0f6)",
+			border_inactive = "rgb(6e738d)",
+			border_locked_active = "rgb(ed8796)",
+			border_locked_inactive = "rgb(8087a2)",
+		},
+
+		groupbar = {
+			enabled = true,
+			disable_when_only = true,
+			height = 18,
+			font_size = 10,
+			gaps_in = 2,
+			gaps_out = 2,
+			gradients = true,
+			render_titles = true,
+			scrolling = true,
+			rounding = 6,
+			text_color = "rgb(cad3f5)",
+			text_color_inactive = "rgb(a5adcb)",
+			text_padding = 4,
+
+			col = {
+				active = "rgba(c6a0f6dd)",
+				inactive = "rgba(494d64cc)",
+				locked_active = "rgba(ed8796dd)",
+				locked_inactive = "rgba(8087a2cc)",
+			},
+		},
+	},
+
 	decoration = {
 		rounding = 20,
 		rounding_power = 2,
@@ -311,6 +348,36 @@ bindWorkspace("grave", 1)
 -- Move workspaces between monitors
 hl.bind(mainMod .. " + SHIFT + comma", hl.dsp.workspace.move({ monitor = "l" }))
 hl.bind(mainMod .. " + SHIFT + period", hl.dsp.workspace.move({ monitor = "r" }))
+
+-- Grouped (tabbed) windows
+-- SUPER+G toggles a group for the active window.
+hl.bind(mainMod .. " + G", hl.dsp.group.toggle(), { description = "Toggle active window group" })
+
+-- Cycle through windows in the active group without changing its layout slot.
+hl.bind(mainMod .. " + Tab", hl.dsp.group.next(), { description = "Focus next window in group" })
+hl.bind(mainMod .. " + SHIFT + Tab", hl.dsp.group.prev(), { description = "Focus previous window in group" })
+
+-- Join the nearest window, creating a group when needed.
+local groupDirections = {
+	{ key = "H", direction = "l", name = "left" },
+	{ key = "J", direction = "d", name = "down" },
+	{ key = "K", direction = "u", name = "up" },
+	{ key = "L", direction = "r", name = "right" },
+}
+
+for _, groupMove in ipairs(groupDirections) do
+	hl.bind(
+		mainMod .. " + CTRL + " .. groupMove.key,
+		hl.dsp.window.move({ into_or_create_group = groupMove.direction }),
+		{ description = "Group active window " .. groupMove.name }
+	)
+end
+
+-- Reorder the active tab, remove it from the group, or lock the group.
+hl.bind(mainMod .. " + ALT + H", hl.dsp.group.move_window({ forward = false }), { description = "Move group tab left" })
+hl.bind(mainMod .. " + ALT + L", hl.dsp.group.move_window({ forward = true }), { description = "Move group tab right" })
+hl.bind(mainMod .. " + CTRL + G", hl.dsp.window.move({ out_of_group = true }), { description = "Remove active window from group" })
+hl.bind(mainMod .. " + SHIFT + G", hl.dsp.group.lock_active({ action = "toggle" }), { description = "Lock or unlock active group" })
 
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
