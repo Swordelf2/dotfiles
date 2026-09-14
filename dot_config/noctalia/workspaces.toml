@@ -1,0 +1,4 @@
+[widget.workspaces]
+scale = 1.1
+font_scale = 1.05
+focused_color = "#c6a0f6"
