@@ -1,4 +1,6 @@
 [Default Applications]
+x-scheme-handler/http=glide-browser-bin.desktop
+x-scheme-handler/https=glide-browser-bin.desktop
 x-scheme-handler/tonsite=org.telegram.desktop.desktop
 x-scheme-handler/codex=chatgpt.desktop
 x-scheme-handler/stremio=stremio-enhanced.desktop
