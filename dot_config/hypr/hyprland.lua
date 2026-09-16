@@ -407,6 +407,8 @@ hl.bind("SHIFT + Print", hl.dsp.exec_cmd("grim - | wl-copy"))
 
 -- Cycle audio output
 hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("~/.config/shell/scripts/cycle-sinks.sh"))
+hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd(ipc .. "volume-down"))
+hl.bind(mainMod .. " + F3", hl.dsp.exec_cmd(ipc .. "volume-up"))
 
 local function toggleHandyTranscribe()
 	hl.exec_cmd("pkill -USR2 -x handy")
