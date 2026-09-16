@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Glide Browser
+Comment=Open links in Glide Browser
+Exec=glide-bin %u
+Terminal=false
+Type=Application
+NoDisplay=true
+Categories=Network;WebBrowser;
+MimeType=x-scheme-handler/http;x-scheme-handler/https;
