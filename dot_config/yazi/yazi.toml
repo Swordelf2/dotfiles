@@ -1,6 +1,3 @@
 # yazi.toml
 [mgr]
 show_hidden = true
-
-# [open]
-# prepend_rules = [{ url = "*.csv", use = "edit" }]
