@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=DeepSeek Harness
-Comment=Open the DeepSeek Harness web interface
-Exec=dsh web
-Terminal=false
-Type=Application
-Categories=Development;
