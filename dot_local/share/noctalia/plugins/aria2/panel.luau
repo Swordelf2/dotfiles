@@ -113,13 +113,17 @@ render = function()
 		ui.row({ gap = 8, align = "center" }, {
 			ui.input({ key = "link-" .. openCount, placeholder = "Paste a download link", value = link,
 				flexGrow = 1, onChange = function(value) link = value end, onSubmit = "addDownload" }),
-			ui.button({ text = "Add", variant = "primary", controlSize = "sm", onClick = "addDownload" }),
+			ui.button({ text = "Add", variant = "primary", controlSize = "sm", onClick = function()
+				addDownload()
+			end }),
 		}),
 		ui.row({ gap = 8, align = "center" }, {
 			ui.label({ text = "Limit (MB/s)" }),
 			ui.input({ key = "limit-" .. openCount, value = limitInput, width = 68,
 				onChange = function(value) limitInput = value end, onSubmit = "setLimit" }),
-			ui.button({ text = "Set", controlSize = "sm", onClick = "setLimit" }),
+			ui.button({ text = "Set", controlSize = "sm", onClick = function()
+				setLimit()
+			end }),
 			ui.button({ text = "Unlimited", controlSize = "sm", variant = "ghost", onClick = "removeLimit" }),
 		}),
 		ui.label({ text = "Current limit: " .. currentLimit, fontSize = 12, color = "on_surface_variant" }),
