@@ -1,0 +1,20 @@
+id = "swordelf/aria2"
+name = "aria2"
+version = "1.0.0"
+plugin_api = 22
+author = "swordelf"
+icon = "download"
+description = "Manage local aria2 downloads"
+
+[[widget]]
+id = "status"
+entry = "widget.luau"
+
+[[panel]]
+id = "downloads"
+entry = "panel.luau"
+width = 440
+height = 560
+placement = "attached"
+position = "auto"
+open_near_click = true

@@ -1,0 +1,21 @@
+[plugins]
+enabled = ["swordelf/aria2"]
+
+[widget.aria2]
+type = "swordelf/aria2:status"
+
+[bar.default]
+end = [
+    "media",
+    "tray",
+    "notifications",
+    "clipboard",
+    "aria2",
+    "network",
+    "bluetooth",
+    "volume",
+    "brightness",
+    "battery",
+    "control-center",
+    "session",
+]
