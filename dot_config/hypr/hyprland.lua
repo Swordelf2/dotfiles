@@ -355,8 +355,8 @@ hl.bind(mainMod .. " + SHIFT + period", hl.dsp.workspace.move({ monitor = "r" })
 -- SUPER+G toggles a group for the active window.
 hl.bind(mainMod .. " + G", hl.dsp.group.toggle(), { description = "Toggle active window group" })
 
--- Cycle through windows in the active group without changing its layout slot.
-hl.bind(mainMod .. " + Tab", hl.dsp.group.next(), { description = "Focus next window in group" })
+-- Switch to the previously active workspace.
+hl.bind(mainMod .. " + Tab", hl.dsp.focus({ workspace = "previous" }), { description = "Switch to previous workspace" })
 hl.bind(mainMod .. " + SHIFT + Tab", hl.dsp.group.prev(), { description = "Focus previous window in group" })
 
 -- Join the nearest window, creating a group when needed.
