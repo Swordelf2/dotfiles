@@ -1,0 +1,15 @@
+[Unit]
+Description=aria2 download manager
+
+[Service]
+Type=simple
+
+ExecStartPre=/bin/sh -c 'cat %h/.config/aria2/aria2.conf > %t/aria2.conf && echo "rpc-secret=$$(cat %h/.config/aria2/rpc-secret)" >> %t/aria2.conf'
+ExecStart=/usr/bin/aria2c --conf-path=%t/aria2.conf
+ExecStopPost=/usr/bin/rm -f %t/aria2.conf
+
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
