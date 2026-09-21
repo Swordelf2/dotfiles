@@ -1,3 +1,13 @@
 # yazi.toml
+[opener]
+ollama-add = [
+	{ run = "ollama-add %s1", block = true, desc = "Add to Ollama" },
+]
+
+[open]
+prepend_rules = [
+	{ url = "*.gguf", use = ["open", "ollama-add"] },
+]
+
 [mgr]
 show_hidden = true
