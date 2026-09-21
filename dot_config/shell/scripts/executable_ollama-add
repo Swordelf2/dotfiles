@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+	cat <<'EOF'
+Usage: ollama-add <model.gguf> [model-name]
+
+Add a local GGUF model to a running Ollama instance. If model-name is omitted,
+it is derived from the GGUF filename.
+EOF
+}
+
+die() {
+	printf 'ollama-add: error: %s\n' "$*" >&2
+	exit 1
+}
+
+if [[ ${1:-} == "-h" || ${1:-} == "--help" ]]; then
+	usage
+	exit 0
+fi
+
+if (( $# < 1 || $# > 2 )); then
+	usage >&2
+	die "expected a GGUF file and an optional model name"
+fi
+
+command -v ollama >/dev/null 2>&1 ||
+	die "the 'ollama' command was not found in PATH"
+
+input_path=$1
+[[ -f $input_path ]] || die "GGUF file does not exist or is not a regular file: $input_path"
+[[ -r $input_path ]] || die "GGUF file is not readable: $input_path"
+[[ ${input_path,,} == *.gguf ]] || die "expected a file with a .gguf extension: $input_path"
+
+gguf_path=$(realpath -- "$input_path") || die "could not resolve the GGUF path: $input_path"
+
+if (( $# == 2 )); then
+	model_name=$2
+	[[ -n $model_name ]] || die "model name cannot be empty"
+else
+	filename=${input_path##*/}
+	model_name=${filename%.*}
+	model_name=${model_name,,}
+	model_name=$(sed -E 's/[^a-z0-9._-]+/-/g; s/^[._-]+//; s/[._-]+$//' <<<"$model_name")
+	[[ -n $model_name ]] || die "could not derive a model name; pass one explicitly"
+fi
+
+if [[ ! $model_name =~ ^[[:alnum:]][[:alnum:]_.-]*(/[[:alnum:]][[:alnum:]_.-]*)*(:[[:alnum:]][[:alnum:]_.-]*)?$ ]]; then
+	die "invalid model name '$model_name'; use letters, digits, '.', '_', '-', '/', and an optional ':tag'"
+fi
+
+if ! server_output=$(ollama list 2>&1); then
+	printf 'ollama-add: error: could not connect to Ollama at %s\n' "${OLLAMA_HOST:-127.0.0.1:11434}" >&2
+	printf 'ollama-add: Ollama reported: %s\n' "$server_output" >&2
+	exit 1
+fi
+
+modelfile=$(mktemp "${TMPDIR:-/tmp}/ollama-add.XXXXXX") ||
+	die "could not create a temporary Modelfile"
+trap 'rm -f -- "$modelfile"' EXIT
+
+printf 'FROM %s\n' "$gguf_path" >"$modelfile" ||
+	die "could not create a temporary Modelfile"
+
+printf 'Adding %s as %s...\n' "$gguf_path" "$model_name"
+if ! ollama create "$model_name" --file "$modelfile"; then
+	die "Ollama failed to create '$model_name'; see its output above"
+fi
+
+printf 'Added Ollama model: %s\n' "$model_name"
