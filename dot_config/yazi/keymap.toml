@@ -19,6 +19,6 @@ run = "plugin fzf"
 desc = "Fuzzy-find files"
 
 [[mgr.prepend_keymap]]
-on = "<A-i>"
+on = "<A-h>"
 run = "hidden toggle"
 desc = "Toggle hidden files"
