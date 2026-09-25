@@ -13,6 +13,9 @@ hl.monitor({
 	scale = "1.3333333",
 })
 
+-- Prefer the Nvidia GPU for Hyprland, with the AMD iGPU as a fallback.
+hl.env("AQ_DRM_DEVICES", os.getenv("HOME") .. "/.config/hypr/nvidia-dgpu:" .. os.getenv("HOME") .. "/.config/hypr/amd-igpu")
+
 -- Nvidia-related env vars.
 hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
